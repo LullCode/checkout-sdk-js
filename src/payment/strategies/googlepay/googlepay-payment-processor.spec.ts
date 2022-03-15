@@ -11,7 +11,7 @@ import { getCustomerState } from '../../../customer/customers.mock';
 import { ConsignmentActionCreator, ConsignmentRequestSender } from '../../../shipping';
 import { SubscriptionsActionCreator, SubscriptionsRequestSender } from '../../../subscription';
 import { PaymentMethodInvalidError } from '../../errors';
-// import PaymentMethod from '../../payment-method';
+import PaymentMethod from '../../payment-method';
 import PaymentMethodActionCreator from '../../payment-method-action-creator';
 import PaymentMethodRequestSender from '../../payment-method-request-sender';
 import { getGooglePay, getPaymentMethodsState } from '../../payment-methods.mock';
@@ -130,18 +130,18 @@ describe('GooglePayPaymentProcessor', () => {
             }
         });
 
-        // it('initializes processor without testMode', async () => {
-        //     const googlePayMethod: PaymentMethod = getGooglePay();
-        //     googlePayMethod.config.testMode = undefined;
-        //     jest.spyOn(store.getState().paymentMethods, 'getPaymentMethod').mockReturnValue(googlePayMethod);
-        //     jest.spyOn(paymentMethodActionCreator, 'loadPaymentMethod').mockReturnValue(Promise.resolve(store.getState()));
+        it('initializes processor without testMode', async () => {
+            const googlePayMethod: PaymentMethod = getGooglePay();
+            googlePayMethod.config.testMode = undefined;
+            jest.spyOn(store.getState().paymentMethods, 'getPaymentMethod').mockReturnValue(googlePayMethod);
+            jest.spyOn(paymentMethodActionCreator, 'loadPaymentMethod').mockReturnValue(Promise.resolve(store.getState()));
 
-        //     try {
-        //         await processor.initialize('googlepay');
-        //     } catch (error) {
-        //         expect(error).toBeInstanceOf(MissingDataError);
-        //     }
-        // });
+            try {
+                await processor.initialize('googlepay');
+            } catch (error) {
+                expect(error).toBeInstanceOf(MissingDataError);
+            }
+        });
 
         it('throws when response.result is not defined', async () => {
             const googlePayError: GooglePaymentsError = {

@@ -21,8 +21,7 @@ export default class GooglePayAdyenV3PaymentProcessor {
         }
 
         this._adyenClient = await this._scriptLoader.load({
-            // environment: paymentMethod.config.testMode ? 'TEST' : ' PRODUCTION',
-            environment: 'TEST',
+            environment: paymentMethod.config.testMode ? 'TEST' : ' PRODUCTION',
             locale: storeConfig.storeProfile.storeLanguage,
             clientKey: paymentMethod.initializationData.clientKey,
             paymentMethodsResponse: paymentMethod.initializationData.paymentMethodsResponse,

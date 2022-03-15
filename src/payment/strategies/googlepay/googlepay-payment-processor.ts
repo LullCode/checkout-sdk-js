@@ -92,8 +92,7 @@ export default class GooglePayPaymentProcessor {
                     throw new MissingDataError(MissingDataErrorType.MissingCheckout);
                 }
 
-                const testMode = true;
-                // const { testMode } = paymentMethod.config;
+                const { testMode } = paymentMethod.config;
 
                 return Promise.all([
                     this._googlePayScriptLoader.load(),
