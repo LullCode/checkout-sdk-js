@@ -130,18 +130,18 @@ describe('GooglePayPaymentProcessor', () => {
             }
         });
 
-        it('initializes processor without testMode', async () => {
-            const googlePayMethod: PaymentMethod = getGooglePay();
-            googlePayMethod.config.testMode = undefined;
-            jest.spyOn(store.getState().paymentMethods, 'getPaymentMethod').mockReturnValue(googlePayMethod);
-            jest.spyOn(paymentMethodActionCreator, 'loadPaymentMethod').mockReturnValue(Promise.resolve(store.getState()));
+        // it('initializes processor without testMode', async () => {
+        //     const googlePayMethod: PaymentMethod = getGooglePay();
+        //     googlePayMethod.config.testMode = undefined;
+        //     jest.spyOn(store.getState().paymentMethods, 'getPaymentMethod').mockReturnValue(googlePayMethod);
+        //     jest.spyOn(paymentMethodActionCreator, 'loadPaymentMethod').mockReturnValue(Promise.resolve(store.getState()));
 
-            try {
-                await processor.initialize('googlepay');
-            } catch (error) {
-                expect(error).toBeInstanceOf(MissingDataError);
-            }
-        });
+        //     try {
+        //         await processor.initialize('googlepay');
+        //     } catch (error) {
+        //         expect(error).toBeInstanceOf(MissingDataError);
+        //     }
+        // });
 
         it('throws when response.result is not defined', async () => {
             const googlePayError: GooglePaymentsError = {
