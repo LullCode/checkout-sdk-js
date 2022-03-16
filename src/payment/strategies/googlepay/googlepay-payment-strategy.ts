@@ -263,7 +263,8 @@ export default class GooglePayPaymentStrategy implements PaymentStrategy {
     }
 
     private async _encodeNonce(methodId: string, nonce: string) {
-        if (methodId === PaymentStrategyType.ADYENV2_GOOGLEPAY) {
+        if (methodId === PaymentStrategyType.ADYENV2_GOOGLEPAY ||
+            methodId === PaymentStrategyType.ADYENV3_GOOGLEPAY) {
             return JSON.stringify({
                 type: AdyenPaymentMethodType.GooglePay,
                 googlePayToken: nonce,
