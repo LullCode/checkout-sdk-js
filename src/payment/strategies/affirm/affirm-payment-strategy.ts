@@ -113,6 +113,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
 
     private _getCheckoutInformation(financingProgram: string): AffirmRequestData {
         const state = this._store.getState();
+        // eslint-disable-next-line @typescript-eslint/tslint/config
         const config = state.config.getStoreConfig() as StoreConfig | undefined;
         const consignments = state.consignments.getConsignments();
         const order = state.order.getOrder();
@@ -128,7 +129,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
         const amountTransformer = new AmountTransformer(order.currency.decimalPlaces);
         const billingAddress = this._getBillingAddress();
 
-        return {
+        const checkoutInfo = {
             financing_program: financingProgram,
             merchant: {
                 exchange_lease_enabled: true,
@@ -153,6 +154,14 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
             tax_amount: amountTransformer.toInteger(order.taxTotal),
             total: amountTransformer.toInteger(order.orderAmount),
         };
+
+        // eslint-disable-next-line @typescript-eslint/tslint/config
+        console.log('checkoutInfo', checkoutInfo);
+
+        // eslint-disable-next-line @typescript-eslint/tslint/config
+        debugger;
+
+        return checkoutInfo;
     }
 
     private _getShippingType(consignments?: Consignment[]): string {
@@ -235,7 +244,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
                 item_image_url: item.imageUrl,
                 item_url: item.url,
                 categories: this._getCategories(item.categories),
-                leasable: true
+                leasable: true,
             });
         }
 
