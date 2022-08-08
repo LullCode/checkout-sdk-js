@@ -230,7 +230,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
             items.push({
                 display_name: item.name,
                 sku: item.sku,
-                unit_price: amountTransformer.toInteger(item.salePrice),
+                unit_price: amountTransformer.toInteger(item.listPrice),
                 qty: item.quantity,
                 item_image_url: item.imageUrl,
                 item_url: item.url,
@@ -243,7 +243,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
             items.push({
                 display_name: item.name,
                 sku: item.sku,
-                unit_price: amountTransformer.toInteger(item.salePrice),
+                unit_price: amountTransformer.toInteger(item.listPrice),
                 qty: item.quantity,
                 item_image_url: item.imageUrl,
                 item_url: item.url,
