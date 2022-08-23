@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.232.6](https://github.com/LullCode/checkout-sdk-js/compare/v1.232.5...v1.232.6) (2022-08-23)
+
+
+### Bug Fixes
+
+* **payment:** affirm leasable flag every lineItem ([be150d9](https://github.com/LullCode/checkout-sdk-js/commit/be150d94e9f312c0db8e80f353d1168f28b45b37))
+
 ### [1.232.5](https://github.com/LullCode/checkout-sdk-js/compare/v1.232.4...v1.232.5) (2022-08-08)
 
 ### [1.232.4](https://github.com/LullCode/checkout-sdk-js/compare/v1.232.0...v1.232.4) (2022-07-28)
