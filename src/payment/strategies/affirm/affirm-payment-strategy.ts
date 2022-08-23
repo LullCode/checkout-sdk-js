@@ -248,6 +248,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
                 item_image_url: item.imageUrl,
                 item_url: item.url,
                 categories: this._getCategories(item.categories),
+                leasable: false
             });
         }
 
@@ -259,6 +260,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
                 qty: 1,
                 item_image_url: '',
                 item_url: '',
+                leasable: false
             });
         }
 
@@ -271,6 +273,7 @@ export default class AffirmPaymentStrategy implements PaymentStrategy {
                     qty: item.quantity,
                     item_image_url: '',
                     item_url: '',
+                    leasable: false
                 });
             }
         }
